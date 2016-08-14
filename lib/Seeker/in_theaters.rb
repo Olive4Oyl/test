@@ -9,7 +9,7 @@ class Seeker::In_theaters
 	 def initialize(in_theaters)
 	 	in_theaters.each do |key, value|
 			self.send("#{key}=", value) 
-			binding.pry
+			# binding.pry
 		end
 		@@all << self
 	end
@@ -21,6 +21,7 @@ class Seeker::In_theaters
 	def self.create_in_theaters(in_theaters)
 		in_theaters.each do |hash|
 		Seeker::In_theaters.new(hash)
+		# binding.pry
 	end
   end
 
