@@ -13,12 +13,12 @@ class Seeker::Scraper
 		in_theaters = {}
 		in_theaters[:name] = in_theaters_collection.css(".overview-top h4")[i].text.strip
 		in_theaters[:ratings] = in_theaters_collection.css(".metascore.no_ratings")[i].text.strip.tr("\n"," ")
-		in_theaters[:descripton] = in_theaters_collection.css(".thebuzz")[i].text.strip.tr("\n", "")
+		in_theaters[:description] = in_theaters_collection.css(".thebuzz")[i].text.strip.tr("\n", "")
 		# in_theaters[:trailer] = in_theaters_collection.css(".overview-bottom a")[i].attribute("href").value
 		# in_theaters[:ticket] = 
 		in_theaters
 
-		binding.pry
+		# binding.pry
 		end
 	end
 
