@@ -9,7 +9,6 @@ class Seeker::Coming_soon
 	 def initialize(coming_soon)
 	 	coming_soon.each do |key, value|
 			self.send("#{key}=", value) 
-			# binding.pry
 		end
 		@@all << self
 	end
@@ -21,9 +20,8 @@ class Seeker::Coming_soon
 	def self.create_coming_soon(coming_soon)
 		coming_soon.each do |hash|
 		Seeker::Coming_soon.new(hash)
-		# binding.pry
-	end
-  end
+		end
+  	end
 
 
 

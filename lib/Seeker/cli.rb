@@ -9,8 +9,9 @@ class Seeker::CLI
 		string = Artii::Base.new :font => 'roman'
 		puts string.asciify("          MovieSeeker")::red
 		greeting
+		exit
 	
-
+		# puts stored_list_for_now
 		# Seeker::In_theaters.create_in_theaters(Seeker::Scraper.scrape_odd_page)
 	end
 
@@ -25,41 +26,63 @@ class Seeker::CLI
 		puts "[][][][][][][][][][][][][][][][][][][][]][][][][][][][][]][][][][][][][][]][][][][][][][][]][][][][][][][][]][][][][][][][][][][][][][]][][][][][][][][]][][][][][][][][]][][][][]"
 		puts "----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------"
 		user_input = gets.strip.downcase
-		if user_input == "soon"
+		if user_input == "now" || user_input == "soon"
 			list(user_input)
+		else exit
+		
 		end
 	end
+
+	def stored_list_for_now
+	   Seeker::In_theaters.create_in_theaters(Seeker::Scraper.scrape_in_theaters_page)
+	   # binding.pry
+ 	end
 
 	def stored_coming_soon
 		Seeker::Coming_soon.create_coming_soon(Seeker::Scraper.scrape_coming_soon_page)
 	end
 
+
 	def list(user_input)
 		system "clear"
-		puts "                   \t\t\t\t\t\t\t\tUPCOMING MOVIES"
-		puts "----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------"
-		puts "[][][][][][][][][][][][][][][][][][][][]][][][][][][][][]][][][][][][][][]][][][][][][][][]][][][][][][][][]][][][][][][][][][][][][][]][][][][][][][][]][][][][][][][][]][][][][]"
-		puts "----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------"
-		if user_input == "soon"
+		if user_input == "now"
+			puts "                   \t\t\t\t\t\t\t\tNOW PLAYING MOVIES"
+			puts "----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------"
+			puts "[][][][][][][][][][][][][][][][][][][][]][][][][][][][][]][][][][][][][][]][][][][][][][][]][][][][][][][][]][][][][][][][][][][][][][]][][][][][][][][]][][][][][][][][]][][][][]"
+			puts "----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------"
+			stored_list_for_now.each.with_index(1) do |hash, i|
+				puts "#{i}. #{hash[:name]}"
+			end
+		else user_input == "soon"
+			puts "                   \t\t\t\t\t\t\t\tUPCOMING MOVIES"
+			puts "----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------"
+			puts "[][][][][][][][][][][][][][][][][][][][]][][][][][][][][]][][][][][][][][]][][][][][][][][]][][][][][][][][]][][][][][][][][][][][][][]][][][][][][][][]][][][][][][][][]][][][][]"
+			puts "----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------"
 			stored_coming_soon.each.with_index(1) do |hash, i|
 				puts "#{i}. #{hash[:name]}"
 			end
 		end 
 	end
 
-	def ratings(user_input)
-		puts "type 'ratings' to see "
-		if user_input == "soon"
-			stored_coming_soon.each.with_index(1) do |hash, i|
-				puts "#{i}. #{hash[:ratings]}"
-			end
-		end
-	end
+	# def ratings(user_input)
+	# 	puts "\t\t\t\t\tRATINGS"
+	# 	puts "----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------"
+	# 	if user_input == "soon"
+	# 		stored_coming_soon.each.with_index(1) do |hash, i|
+	# 			puts "#{i}. #{hash[:ratings]}"
+	# 		end
+	# 	end
+	# end
 
-	# def list_for_now
-	#    Seeker::In_theaters.create_in_theaters(Seeker::Scraper.scrape_in_theaters_page)
-	#    binding.pry
- # 	end
+	# def list_description(user_input, num)
+	# 	if user_input == "soon"
+	# 		stored_coming_soon.each.with_index(1) do |hash, i|
+	# 			if num 
+	# 		end
+	# 	end
+	# end
+
+
  
 
 end
