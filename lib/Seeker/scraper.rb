@@ -12,10 +12,8 @@ class Seeker::Scraper
 		in_theaters_collection.collect.with_index do |movie, i|
 		in_theaters = {}
 		in_theaters[:name] = in_theaters_collection.css(".overview-top h4")[i].text.strip
-		in_theaters[:ratings] = in_theaters_collection.css(".rating_txt")[i].text.strip.tr("\n", "")
 		in_theaters[:description] = in_theaters_collection.css(".outline")[i].text.strip.tr("\n", "")
 		in_theaters
-		# binding.pry
 		end
 	end
 
@@ -27,10 +25,8 @@ class Seeker::Scraper
   		coming_soon_collection.collect.with_index do |movie, i|
 		coming_soon = {}
 		coming_soon[:name] = coming_soon_collection.css(".overview-top h4")[i].text.strip
-		coming_soon[:ratings] = coming_soon_collection.css(".rating_txt")[i].text.strip.tr("\n", "")
 		coming_soon[:description] = coming_soon_collection.css(".outline")[i].text.strip.tr("\n", "")
 		coming_soon 
-	    # binding.pry
 	  end
 	end
 

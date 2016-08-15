@@ -2,7 +2,7 @@ require 'pry'
 
 class Seeker::Coming_soon
 
-	 attr_accessor :name, :ratings, :description
+	 attr_accessor :name, :description
 
 	 @@all = []
 

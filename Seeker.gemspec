@@ -9,8 +9,8 @@ Gem::Specification.new do |spec|
   spec.authors       = ["Kelene Chung"]
   spec.email         = ["simoy93@gmail.com"]
 
-  spec.summary       = %q{CLI that scrapes electronic devices from BestBuy.com}
-  spec.description   = %q{It pulls information from yelp}
+  spec.summary       = %q{CLI that scrapes information from IMDB}
+  spec.description   = %q{It pulls the latest and upcoming box office movies}
   spec.homepage      = "TODO: Put your gem's website or public repo URL here."
 
   # Prevent pushing this gem to RubyGems.org. To allow pushes either set the 'allowed_push_host'

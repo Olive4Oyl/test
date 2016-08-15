@@ -2,14 +2,13 @@ require 'pry'
 
 class Seeker::In_theaters
 
-	 attr_accessor :name, :ratings, :description
+	 attr_accessor :name, :description
 
 	 @@all = []
 
 	 def initialize(in_theaters)
 	 	in_theaters.each do |key, value|
 			self.send("#{key}=", value) 
-			# binding.pry
 		end
 		@@all << self
 	end
@@ -21,7 +20,6 @@ class Seeker::In_theaters
 	def self.create_in_theaters(in_theaters)
 		in_theaters.each do |hash|
 		Seeker::In_theaters.new(hash)
-		# binding.pry
 	end
   end
 
