@@ -66,7 +66,7 @@ class Seeker::CLI
 
 	def list_description(movie, num)
 		if movie == "now"
-			puts "\nDescription:"
+			puts "\nDescription:"::red
 			stored_list_for_now.each.with_index(1) do |hash, i|
 				if num == (i).to_s
 					puts "#{hash[:description]}"
@@ -74,7 +74,7 @@ class Seeker::CLI
 			end
 			menu(movie)
 		elsif movie == "soon"
-			puts "\nDescription:"
+			puts "\nDescription:"::red
 			stored_coming_soon.each.with_index(1) do |hash, i|
 				if num == (i).to_s
 					puts "#{hash[:description]}"
@@ -85,7 +85,7 @@ class Seeker::CLI
 	end
 
 	def menu(movie)
-		puts "\nEnter the number of the movie to see a description OR type 'greeting' for main menu"
+		puts "\nEnter the number of the movie to see a description OR type 'greeting' for main menu"::red
 		input = gets.strip
 		if input == "greeting"
 			puts "\n"
